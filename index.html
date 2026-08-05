@@ -3,9 +3,71 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PanoVLA: Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation.">
-    <title>PanoVLA | Learning Panorama-Aware VLA for Mobile Manipulation</title>
+    <meta name="description" content="PanoVLA project page for Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation, featuring a panorama-aware policy, whole-body teleoperation system, dataset, and real-world experiments.">
+    <meta name="keywords" content="PanoVLA, panorama-aware VLA, vision-language-action, mobile manipulation, whole-body teleoperation, panoramic perception, robot learning">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://puffyyy.github.io/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PanoVLA">
+    <meta property="og:title" content="Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation">
+    <meta property="og:description" content="PanoVLA combines panoramic perception with whole-body teleoperation for real-world mobile bimanual manipulation.">
+    <meta property="og:url" content="https://puffyyy.github.io/">
+    <meta property="og:image" content="https://puffyyy.github.io/assets/images/panovla-framework-pipeline.png">
+    <meta property="og:image:alt" content="PanoVLA panorama-aware vision-language-action framework">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation">
+    <meta name="twitter:description" content="PanoVLA combines panoramic perception with whole-body teleoperation for real-world mobile bimanual manipulation.">
+    <meta name="twitter:image" content="https://puffyyy.github.io/assets/images/panovla-framework-pipeline.png">
+
+    <meta name="citation_title" content="Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation">
+    <meta name="citation_author" content="Donglin Yang">
+    <meta name="citation_author" content="Haoran Chen">
+    <meta name="citation_author" content="Xingyu Chen">
+    <meta name="citation_author" content="Lixing Liu">
+    <meta name="citation_author" content="Manyi Li">
+    <meta name="citation_author" content="Changhe Tu">
+    <meta name="citation_author" content="Ke Xu">
+    <meta name="citation_author" content="Xiaojian Ma">
+    <meta name="citation_author" content="Si Liu">
+    <meta name="citation_publication_date" content="2026">
+    <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2608.02257">
+
+    <title>Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation | PanoVLA</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "name": "Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation",
+        "headline": "Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation",
+        "url": "https://puffyyy.github.io/",
+        "sameAs": "https://arxiv.org/abs/2608.02257",
+        "datePublished": "2026",
+        "image": "https://puffyyy.github.io/assets/images/panovla-framework-pipeline.png",
+        "keywords": [
+          "PanoVLA",
+          "panorama-aware VLA",
+          "vision-language-action",
+          "mobile manipulation",
+          "whole-body teleoperation",
+          "panoramic perception",
+          "robot learning"
+        ],
+        "author": [
+          {"@type": "Person", "name": "Donglin Yang"},
+          {"@type": "Person", "name": "Haoran Chen"},
+          {"@type": "Person", "name": "Xingyu Chen"},
+          {"@type": "Person", "name": "Lixing Liu"},
+          {"@type": "Person", "name": "Manyi Li"},
+          {"@type": "Person", "name": "Changhe Tu"},
+          {"@type": "Person", "name": "Ke Xu"},
+          {"@type": "Person", "name": "Xiaojian Ma"},
+          {"@type": "Person", "name": "Si Liu"}
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -98,7 +160,7 @@
           <span>real-world trajectories</span>
         </div>
         <div>
-          <strong>5.5h</strong>
+          <strong>5.5 hours</strong>
           <span>mobile manipulation demonstrations</span>
         </div>
         <div>
@@ -117,7 +179,7 @@
           Mobile manipulation is a key capability for embodied intelligence, enabling robots to accomplish complex multi-stage tasks in open-world environments. However, mobile manipulation poses two key challenges for vision-language-action policies: efficiently collecting high-quality whole-body demonstrations and representing the surrounding environment under continuous base motion.
         </p>
         <p>
-          We develop a whole-body teleoperation system and a panoramic-aware VLA policy. The system enables coordinated control of a wheeled bimanual robot through a single VR interface and supports the acquisition of a real-world mobile manipulation dataset comprising 5.5 hours of multimodal demonstrations. Building on this dataset, we propose PanoVLA, a panorama-aware vision-language-action policy for mobile bimanual manipulation.
+          We develop a whole-body teleoperation system and a panorama-aware VLA policy. The system enables coordinated control of a wheeled bimanual robot through a single VR interface and supports the acquisition of a real-world mobile manipulation dataset comprising 5.5 hours of multimodal demonstrations. Building on this dataset, we propose PanoVLA, a panorama-aware vision-language-action policy for mobile bimanual manipulation.
         </p>
         <p>
           PanoVLA introduces global spatial context through dedicated panorama encoding and fusion modules, enabling effective integration of panoramic observations with language instructions and robot states for action generation. In four real-world tasks, PanoVLA achieves an average stage completion rate of 91.3% and an end-to-end success rate of 73.4%, substantially outperforming local-view baselines.
@@ -153,7 +215,7 @@
             <article>
               <span>03</span>
               <h3>Real-World Dataset</h3>
-              <p>The system supports 800 real-world trajectories and 5.5 hours of multimodal demonstrations.</p>
+              <p>The system was used to collect 800 real-world trajectories, totaling 5.5 hours of multimodal demonstrations.</p>
             </article>
           </div>
         </div>
@@ -211,14 +273,14 @@
         <div class="task-grid">
           <article>
             <h3>Move Pen</h3>
-            <p>Place the pen in its holder across front, left, and right layouts.</p>
+            <p>Place the pen in the pen case across front, left, and right layouts.</p>
             <video controls playsinline preload="metadata">
               <source src="assets/videos/task1.mp4" type="video/mp4">
             </video>
           </article>
           <article>
             <h3>Move Block</h3>
-            <p>Transfer blocks to the front area from left, right, or both sides.</p>
+            <p>Place the yellow block on the gray area across different spatial layouts.</p>
             <video controls playsinline preload="metadata">
               <source src="assets/videos/task2.mp4" type="video/mp4">
             </video>
@@ -280,7 +342,6 @@
 
       <section id="citation" class="section narrow">
         <h2>Citation</h2>
-        <p>Replace the venue fields after the final publication details are available.</p>
         <pre><code id="bibtex">@misc{yang2026learningpanoramaawarevlamobile,
       title={Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation}, 
       author={Donglin Yang and Haoran Chen and Xingyu Chen and Lixing Liu and Manyi Li and Changhe Tu and Ke Xu and Xiaojian Ma and Si Liu},
