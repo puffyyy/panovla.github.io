@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PanoVLA: Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation.">
+    <title>PanoVLA | Learning Panorama-Aware VLA for Mobile Manipulation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top">PanoVLA</a>
+        <div class="nav-links">
+          <a href="#abstract">Abstract</a>
+          <a href="#teleoperation">Teleoperation</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#experiments">Experiments</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Mobile Manipulation · Panorama-Aware VLA · Whole-Body Teleoperation</p>
+          <h1>Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation</h1>
+          <p class="subtitle">
+            PanoVLA injects robot-centric panoramic context into a vision-language-action policy for long-horizon mobile bimanual manipulation.
+          </p>
+
+          <div class="authors">
+            <p class="author-list">
+              Donglin Yang<sup>1,2</sup>,
+              Haoran Chen<sup>2,3</sup>,
+              Xingyu Chen<sup>1</sup>,
+              Lixing Liu<sup>2</sup>,
+              Manyi Li<sup>3</sup>,
+              Changhe Tu<sup>3</sup>,
+              Ke Xu<sup>1</sup>,
+              Xiaojian Ma<sup>2</sup>,
+              Si Liu<sup>1</sup>
+            </p>
+            <p class="affiliations">
+              <span><sup>1</sup>Beihang University</span>
+              <span><sup>2</sup>Beijing Institute for General Artificial Intelligence</span>
+              <span><sup>3</sup>Shandong University</span>
+            </p>
+          </div>
+
+          <div class="actions" aria-label="Project links">
+            <a class="button primary" href="https://arxiv.org/abs/2608.02257" target="_blank" rel="noopener noreferrer">
+              <svg class="button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M5 2.5h6.5L16 7v10.5H5z"></path>
+                <path d="M11.5 2.5V7H16M8 10h5M8 13h5"></path>
+              </svg>
+              <span>Paper</span>
+            </a>
+            <a class="button" href="https://huggingface.co/datasets/puffyyy/panorama-mobile-manipulation" target="_blank" rel="noopener noreferrer">
+              <svg class="button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <ellipse cx="10" cy="4.5" rx="6.5" ry="2.5"></ellipse>
+                <path d="M3.5 4.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5M3.5 9.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"></path>
+              </svg>
+              <span>Dataset</span>
+            </a>
+            <a class="button" href="#experiments" target="_blank" rel="noopener noreferrer">
+              <svg class="button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <rect x="2.5" y="4" width="15" height="12" rx="2"></rect>
+                <path d="m8 7 5 3-5 3z" fill="currentColor" stroke="none"></path>
+              </svg>
+              <span>Task Videos</span>
+            </a>
+            <a class="button" href="#citation" target="_blank" rel="noopener noreferrer">
+              <svg class="button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M8 6H6a3 3 0 0 0-3 3v5h5V9H5.2A1.8 1.8 0 0 1 7 7.5h1zM17 6h-2a3 3 0 0 0-3 3v5h5V9h-2.8A1.8 1.8 0 0 1 16 7.5h1z"></path>
+              </svg>
+              <span>BibTeX</span>
+            </a>
+            <a class="button disabled" href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+              <svg class="button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="m7 5-5 5 5 5M13 5l5 5-5 5M12 3 8 17"></path>
+              </svg>
+              <span>Code soon</span>
+            </a>
+          </div>
+
+          <video class="hero-video" controls playsinline preload="metadata" aria-label="PanoVLA project overview video">
+            <source src="assets/videos/video-web.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+      </section>
+
+      <section class="metrics band" aria-label="Key numbers">
+        <div>
+          <strong>800</strong>
+          <span>real-world trajectories</span>
+        </div>
+        <div>
+          <strong>5.5h</strong>
+          <span>mobile manipulation demonstrations</span>
+        </div>
+        <div>
+          <strong>91.3%</strong>
+          <span>average stage completion rate</span>
+        </div>
+        <div>
+          <strong>73.4%</strong>
+          <span>average end-to-end success rate</span>
+        </div>
+      </section>
+
+      <section id="abstract" class="section narrow">
+        <h2>Abstract</h2>
+        <p>
+          Mobile manipulation is a key capability for embodied intelligence, enabling robots to accomplish complex multi-stage tasks in open-world environments. However, mobile manipulation poses two key challenges for vision-language-action policies: efficiently collecting high-quality whole-body demonstrations and representing the surrounding environment under continuous base motion.
+        </p>
+        <p>
+          We develop a whole-body teleoperation system and a panoramic-aware VLA policy. The system enables coordinated control of a wheeled bimanual robot through a single VR interface and supports the acquisition of a real-world mobile manipulation dataset comprising 5.5 hours of multimodal demonstrations. Building on this dataset, we propose PanoVLA, a panorama-aware vision-language-action policy for mobile bimanual manipulation.
+        </p>
+        <p>
+          PanoVLA introduces global spatial context through dedicated panorama encoding and fusion modules, enabling effective integration of panoramic observations with language instructions and robot states for action generation. In four real-world tasks, PanoVLA achieves an average stage completion rate of 91.3% and an end-to-end success rate of 73.4%, substantially outperforming local-view baselines.
+        </p>
+      </section>
+
+      <section id="teleoperation" class="section figure-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Data Collection</p>
+            <h2>Teleoperation System</h2>
+          </div>
+          <p>A whole-body VR interface turns human intent into synchronized mobile base, dual-arm, and gripper demonstrations.</p>
+        </div>
+
+        <div class="figure-layout">
+          <figure class="feature-figure">
+            <img src="assets/images/teleoperation-system.png" alt="Whole-body teleoperation system for collecting mobile manipulation demonstrations">
+            <figcaption>Whole-body teleoperation system for collecting synchronized base, arm, and gripper control trajectories.</figcaption>
+          </figure>
+
+          <div class="feature-points">
+            <article>
+              <span>01</span>
+              <h3>VR Whole-Body Control</h3>
+              <p>A single wearable interface captures operator motion and command intent for mobile bimanual manipulation.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Mobile Base Retargeting</h3>
+              <p>The wheeled base is represented as a planar virtual floating base, allowing navigation and arm motion to be coordinated.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Real-World Dataset</h3>
+              <p>The system supports 800 real-world trajectories and 5.5 hours of multimodal demonstrations.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pipeline" class="section figure-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Method</p>
+            <h2>PanoVLA Pipeline</h2>
+          </div>
+          <p>PanoVLA injects robot-centric panoramic context into a VLA action policy for long-horizon mobile manipulation.</p>
+        </div>
+
+        <div class="figure-layout reverse">
+          <figure class="feature-figure">
+            <img src="assets/images/panovla-framework-pipeline.png" alt="PanoVLA framework pipeline with panoramic observation encoding and action generation">
+            <figcaption>PanoVLA framework with panoramic observation encoding, task-conditioned fusion, and whole-body action generation.</figcaption>
+          </figure>
+
+          <div class="feature-points">
+            <article>
+              <span>01</span>
+              <h3>Global Observation</h3>
+              <p>A top-mounted 360-degree camera captures robot-centric scene context beyond the local camera field of view.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Panorama Expert</h3>
+              <p>A dedicated branch fuses panorama tokens with language, local visual observations, and robot state.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Whole-Body Action</h3>
+              <p>The policy predicts action chunks covering dual arms, grippers, and mobile base velocity.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiments" class="section figure-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Evaluation</p>
+            <h2>Real-World Experiments</h2>
+          </div>
+          <p>Four real-world tasks stress target search, mobile approach, manipulation, and multi-stage spatial state tracking.</p>
+        </div>
+
+        <figure class="feature-figure wide-figure">
+          <img src="assets/images/real-world-exp-4-tasks.png" alt="Four real-world experiment tasks for PanoVLA evaluation">
+          <figcaption>Real-world task suite covering object transfer, articulated interaction, and long-table mobile manipulation.</figcaption>
+        </figure>
+
+        <div class="task-grid">
+          <article>
+            <h3>Move Pen</h3>
+            <p>Place the pen in its holder across front, left, and right layouts.</p>
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/task1.mp4" type="video/mp4">
+            </video>
+          </article>
+          <article>
+            <h3>Move Block</h3>
+            <p>Transfer blocks to the front area from left, right, or both sides.</p>
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/task2.mp4" type="video/mp4">
+            </video>
+          </article>
+          <article>
+            <h3>Open Curtain</h3>
+            <p>Open curtains on the left, right, or both sides of the workspace.</p>
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/task3.mp4" type="video/mp4">
+            </video>
+          </article>
+          <article>
+            <h3>Wipe Table</h3>
+            <p>Wipe table stains along a long surface and return the cloth.</p>
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/task4.mp4" type="video/mp4">
+            </video>
+          </article>
+        </div>
+
+        <p>
+          PanoVLA improves both intermediate stage completion and full task completion across the four real-world mobile manipulation tasks. The average stage completion rate reaches 91.3%, and the average end-to-end success rate reaches 73.4%.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Avg. SCR</th>
+                <th>Avg. SR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>π0.5</td>
+                <td>58.6%</td>
+                <td>30.0%</td>
+              </tr>
+              <tr>
+                <td>π0.5 w/ Pano</td>
+                <td>80.8%</td>
+                <td>56.7%</td>
+              </tr>
+              <tr>
+                <td>π0.5 w/ Stacked Pano</td>
+                <td>70.4%</td>
+                <td>38.3%</td>
+              </tr>
+              <tr class="best">
+                <td>PanoVLA</td>
+                <td>91.3%</td>
+                <td>73.4%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="citation" class="section narrow">
+        <h2>Citation</h2>
+        <p>Replace the venue fields after the final publication details are available.</p>
+        <pre><code id="bibtex">@misc{yang2026learningpanoramaawarevlamobile,
+      title={Learning Panorama-Aware VLA for Mobile Manipulation with Whole-Body Teleoperation}, 
+      author={Donglin Yang and Haoran Chen and Xingyu Chen and Lixing Liu and Manyi Li and Changhe Tu and Ke Xu and Xiaojian Ma and Si Liu},
+      year={2026},
+      eprint={2608.02257},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2608.02257}, 
+}</code></pre>
+        <button class="button" type="button" id="copyBibtex">Copy BibTeX</button>
+        <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>PanoVLA project page.</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
